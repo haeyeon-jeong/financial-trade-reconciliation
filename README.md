@@ -29,7 +29,7 @@ The data includes intentionally generated issues such as duplicate trades, inval
 
 ## Methodology
 
-1. Data Validation & Cleaning
+**1. Data Validation & Cleaning**
 
 Trade data was inspected and cleaned before analysis. Key issues included:
 - Duplicate trade IDs
@@ -39,7 +39,7 @@ Trade data was inspected and cleaned before analysis. Key issues included:
 - Invalid settlement dates
 - Price anomalies
 
-2. Trade Analysis & Reporting
+**2. Trade Analysis & Reporting**
 
 Cleaned trade data was analyzed to summarize:
 
@@ -48,7 +48,7 @@ Cleaned trade data was analyzed to summarize:
 - Average prices
 - Daily trading activity
 
-3. Position Reconciliation
+**3. Position Reconciliation**
 
 Position changes were compared with trading activity and corporate actions.
 
@@ -60,7 +60,7 @@ Reconciliation Difference = Actual Change − Expected Change
 
 A difference of zero indicates a match, while a non-zero difference indicates a reconciliation issue.
 
-4. Visualization & Insights
+**4. Visualization & Insights**
 
 Charts were created to summarize key results, including trading volume, price movement, and reconciliation status.
 
