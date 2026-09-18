@@ -82,7 +82,7 @@ financial-trade-reconciliation/
 │
 ├── data/                 # Generated trade, position, and corporate-action data
 ├── code/
-│   ├── final_project.py     # Generates the synthetic financial datasets
+│   ├── data_generation.py     # Generates the synthetic financial datasets
 │   └── final_project_hy.py  # Data cleaning, analysis, reconciliation, and visualization
 ├── reports/              # Cleaned data, analytical reports, and charts
 ├── presentation/         # Final project presentation
