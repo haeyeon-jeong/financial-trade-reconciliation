@@ -52,11 +52,11 @@ Cleaned trade data was analyzed to summarize:
 
 Position changes were compared with trading activity and corporate actions.
 
-Actual Position Change = Position T1 − Position T0
+**Actual Position Change = Position T1 − Position T0**
 
-Expected Position Change = Net Trade Quantity + Corporate Action Shares
+**Expected Position Change = Net Trade Quantity + Corporate Action Shares**
 
-Reconciliation Difference = Actual Change − Expected Change
+**Reconciliation Difference = Actual Change − Expected Change**
 
 A difference of zero indicates a match, while a non-zero difference indicates a reconciliation issue.
 
