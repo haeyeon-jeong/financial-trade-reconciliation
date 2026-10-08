@@ -78,6 +78,7 @@ Charts were created to summarize key results, including trading volume, price mo
 
 ## Project Structure
 
+```
 financial-trade-reconciliation/
 │
 ├── data/                 # Generated trade, position, and corporate-action data
@@ -87,8 +88,8 @@ financial-trade-reconciliation/
 ├── reports/              # Cleaned data, analytical reports, and charts
 ├── presentation/         # Final project presentation
 └── README.md
-
-'''---
+```
+---
 
 ## Tools
 Python, Pandas, SQL, Matplotlib
