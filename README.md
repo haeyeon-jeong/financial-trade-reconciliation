@@ -37,8 +37,7 @@ Checked for duplicate trade IDs, invalid quantities, missing prices and venues, 
 - Retained 253 cleaned trades.
 - Flagged 15 potential price outliers for review without removing them.
 - Identified missing position records and incomplete corporate action data.
-
-
+  
 
 **2. Trade Aggregation & Reporting**
 
@@ -48,8 +47,7 @@ Generated daily and symbol-level reports covering:
 - Trade counts and notional values
 - Average trade prices
 
-Validated the aggregated results against cleaned trade quantities.
-
+Validated the aggregated results against cleaned trade quantities.  
 
 
 **3. Position Reconciliation**
@@ -64,8 +62,7 @@ Compared actual position changes with expected changes from net trades and corpo
 
 Results were classified as MATCH, MISMATCH, or INVALID.
 
-Incomplete account-symbol position records were excluded from reconciliation, while missing corporate action share values were flagged as INVALID.
-
+Incomplete account-symbol position records were excluded from reconciliation, while missing corporate action share values were flagged as INVALID.  
 
 
 **4. Dashboard & Visualization**
@@ -126,11 +123,10 @@ financial-trade-reconciliation/
 
 **From the project root directory, run:**
 
-`python code/reconciliation.py`
-
+`python code/reconciliation.py`  
 `streamlit run app.py`
 
-The reconciliation script generates cleaned data, reports, and charts in the reports/ folder. 
+The reconciliation script generates cleaned data, reports, and charts in the reports/ folder.  
 The Streamlit app uses these outputs to display the dashboard.
 
 ---
