@@ -38,6 +38,7 @@ Checked for duplicate trade IDs, invalid quantities, missing prices and venues, 
 - Identified missing position records and incomplete corporate action data.
 
 
+
 **2. Trade Aggregation & Reporting**
 
 Generated daily and symbol-level reports covering:
@@ -47,6 +48,7 @@ Generated daily and symbol-level reports covering:
 - Average trade prices
 
 Validated the aggregated results against cleaned trade quantities.
+
 
 
 **3. Position Reconciliation**
@@ -62,6 +64,7 @@ Compared actual position changes with expected changes from net trades and corpo
 Results were classified as MATCH, MISMATCH, or INVALID.
 
 Incomplete account-symbol position records were excluded from reconciliation, while missing corporate action share values were flagged as INVALID.
+
 
 
 **4. Dashboard & Visualization**
@@ -117,14 +120,13 @@ financial-trade-reconciliation/
 ## How to Run
 **Install the required Python packages:**
 
-pip install pandas numpy matplotlib seaborn streamlit
+`pip install pandas numpy matplotlib seaborn streamlit`
 
 
 **From the project root directory, run:**
 
-python code/reconciliation.py
-
-streamlit run app.py
+`python code/reconciliation.py`
+`streamlit run app.py`
 
 The reconciliation script generates cleaned data, reports, and charts in the reports/ folder. 
 The Streamlit app uses these outputs to display the dashboard.
