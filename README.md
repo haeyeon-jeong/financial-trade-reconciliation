@@ -3,7 +3,8 @@
 ## Overview
 This project uses Python to clean and analyze financial trade data, generate daily and symbol-level reports, and reconcile position changes against trading activity and corporate actions.
 
-The project uses synthetic financial data generated with an instructor-provided Python script. The dataset includes intentionally introduced data quality issues.
+The project uses synthetic financial data generated with an instructor-provided Python script.  
+The dataset includes intentionally introduced data quality issues.  
 
 The goal is to identify discrepancies, investigate missing records, and present the results through a Streamlit dashboard.
 
@@ -126,6 +127,7 @@ financial-trade-reconciliation/
 **From the project root directory, run:**
 
 `python code/reconciliation.py`
+
 `streamlit run app.py`
 
 The reconciliation script generates cleaned data, reports, and charts in the reports/ folder. 
