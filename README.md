@@ -123,9 +123,11 @@ pip install pandas numpy matplotlib seaborn streamlit
 **From the project root directory, run:**
 
 python code/reconciliation.py
+
 streamlit run app.py
 
-The reconciliation script generates cleaned data, reports, and charts in the reports/ folder. The Streamlit app uses these outputs to display the dashboard.
+The reconciliation script generates cleaned data, reports, and charts in the reports/ folder. 
+The Streamlit app uses these outputs to display the dashboard.
 
 ---
 
