@@ -1,11 +1,11 @@
 # Financial Trade Reconciliation & Analytics
 
 ## Overview
-This project explores financial trade data using SQL and Python, focusing on data cleaning, trade analysis, and position reconciliation.
+This project uses Python to clean and analyze financial trade data, generate daily and symbol-level reports, and reconcile position changes against trading activity and corporate actions.
 
-The project uses synthetically generated trade, position, and corporate-action data with intentionally added data-quality issues. SQL is used to query and analyze the data, while Python is used for cleaning, reconciliation, and further analysis.
+The project uses synthetic financial data generated with an instructor-provided Python script. The dataset includes intentionally introduced data quality issues.
 
-The goal is to demonstrate a practical workflow for working with financial transaction data and identifying discrepancies between trading activity and daily positions.
+The goal is to identify discrepancies, investigate missing records, and present the results through a Streamlit dashboard.
 
 ---
 
@@ -14,65 +14,71 @@ Haeyeon Jeong
 
 ---
 
-## Data
-The project uses synthetically generated financial data for analysis and testing.
+## Dataset
+Four datasets were used:
 
-The datasets include:
-- Trade data
-- T0 (starting) positions
-- T1 (ending) positions
-- Corporate actions
-
-The data includes intentionally generated issues such as duplicate trades, invalid quantities, missing values, settlement-date errors, missing position records, and corporate-action errors.
+| Dataset | Records | Description |
+|---|---:|---|
+| Trades | 286 | Trading activity across symbols and accounts |
+| Positions T0 | 31 | Starting positions |
+| Positions T1 | 30 | Ending positions |
+| Corporate Actions | 9 | Corporate action adjustments |
 
 ---
 
 ## Methodology
 
-**1. Data Validation & Cleaning**
+**1. Data Quality Assessment & Cleaning**
 
-Trade data was inspected and cleaned before analysis. Key issues included:
-- Duplicate trade IDs
-- Zero and negative quantities
-- Missing prices
-- Missing venues
-- Invalid settlement dates
-- Price anomalies
+Checked for duplicate trade IDs, invalid quantities, missing prices and venues, settlement date issues, and unusual trade prices.
 
-**2. Trade Analysis & Reporting**
+- Removed 33 invalid or duplicate trade records.
+- Retained 253 cleaned trades.
+- Flagged 15 potential price outliers for review without removing them.
+- Identified missing position records and incomplete corporate action data.
 
-Cleaned trade data was analyzed to summarize:
+**2. Trade Aggregation & Reporting**
 
-- Trading volume by symbol
-- Net trade quantity
-- Average prices
-- Daily trading activity
+Generated daily and symbol-level reports covering:
+
+- Trading volume and net trade quantity
+- Trade counts and notional values
+- Average trade prices
+
+Validated the aggregated results against cleaned trade quantities.
 
 **3. Position Reconciliation**
 
-Position changes were compared with trading activity and corporate actions.
+Compared actual position changes with expected changes from net trades and corporate action adjustments.
 
-**Actual Position Change = Position T1 − Position T0**
+**Actual Change = Position T1 − Position T0**
 
-**Expected Position Change = Net Trade Quantity + Corporate Action Shares**
+**Expected Change = Net Trade Quantity + Corporate Action Shares**
 
 **Reconciliation Difference = Actual Change − Expected Change**
 
-A difference of zero indicates a match, while a non-zero difference indicates a reconciliation issue.
+Results were classified as MATCH, MISMATCH, or INVALID.
 
-**4. Visualization & Insights**
+Incomplete account-symbol position records were excluded from reconciliation, while missing corporate action share values were flagged as INVALID.
 
-Charts were created to summarize key results, including trading volume, price movement, and reconciliation status.
+**4. Dashboard & Visualization**
+
+Built a Streamlit dashboard to display:
+
+- Trading volume by symbol
+- Overall and individual symbol price trends
+- Reconciliation status
+- Reconciliation differences
+- Detailed reconciliation results
 
 ---
 
 ## Key Findings
 
-- AAPL had the highest total trading volume with 88,307 shares.
-- META had the largest positive net quantity at +31,813 shares.
-- MSFT had the largest negative net quantity at −8,691 shares.
-- Only 1 of 11 symbols reconciled correctly.
-- Missing position records and incomplete corporate-action data contributed to reconciliation discrepancies.
+- AAPL had the highest trading volume with 88,307 shares.
+- META had the largest positive net quantity (+31,813 shares).
+- MSFT had the largest negative net quantity (−8,691 shares).
+- Of 10 symbols, 1 MATCHED, 8 MISMATCHED, and 1 was INVALID.
 
 ---
 
@@ -81,15 +87,49 @@ Charts were created to summarize key results, including trading volume, price mo
 ```
 financial-trade-reconciliation/
 │
-├── data/                 # Generated trade, position, and corporate-action data
-├── code/
-│   ├── data_generation.py     # Generates the synthetic financial datasets
-│   └── final_project_hy.py  # Data cleaning, analysis, reconciliation, and visualization
-├── reports/              # Cleaned data, analytical reports, and charts
-├── presentation/         # Final project presentation
-└── README.md
+├── data/                         # Synthetic financial datasets
+│   ├── sample_trades.csv         # Trade transactions across symbols and accounts
+│   ├── positions_t0.csv          # Starting positions by account and symbol
+│   ├── positions_t1.csv          # Ending positions by account and symbol
+│   └── corp_actions.csv          # Corporate action records and share adjustments
+│
+├── code/                         # Data processing and analysis scripts
+│   ├── data_generation.py        # Generates synthetic financial datasets
+│   ├── reconciliation.py         # Data cleaning, validation, reporting, and reconciliation
+│   └── reconciliation.ipynb      # Jupyter Notebook with analysis and outputs
+│
+├── reports/                      # Generated reports and visualizations
+│   ├── cleaned_trades.csv        # Cleaned and validated trade data
+│   ├── daily_report.csv          # Daily trading summary by symbol
+│   ├── symbol_report.csv         # Aggregated trading statistics by symbol
+│   ├── full_reconciliation.csv   # Position reconciliation results and status
+│   └── *.png                     # Trading volume, price trends, and reconciliation charts
+│
+├── presentation/                 # Final project presentation (PDF)
+├── app.py                        # Streamlit dashboard for interactive analysis
+└── README.md                     # Project overview, methodology, and findings
+
 ```
 ---
+## How to Run
+Install the required Python packages:
 
+pip install pandas numpy matplotlib seaborn streamlit
+
+
+From the project root directory, run:
+
+python code/reconciliation.py
+streamlit run app.py
+
+The reconciliation script generates cleaned data, reports, and charts in the reports/ folder. The Streamlit app uses these outputs to display the dashboard.
+
+---
+## Limitations
+- The dataset was simulated using an instructor-provided Python script.
+- Corporate action records did not include account information, limiting account-level reconciliation.
+- Reconciliation results were not verified against real trading records.
+
+---
 ## Tools
-Python, Pandas, SQL, Matplotlib
+Python, Pandas, NumPy, Matplotlib, Seaborn, Streamlit
